@@ -17,7 +17,7 @@ jobs:
       - name: Install poetry
         run: pipx install poetry
       - name: Test environment
-        run: python3 --version ; pip --version ; pipx --version ; pipx run poetry --version ; ls -a ; ls docsource -a
+        run: python3 --version ; pip --version ; pipx --version ; pipx run poetry --version ; ls -a ; ls docs -a
       - name: Install dependencies
         run: pipx run poetry install
       - name: Build website
