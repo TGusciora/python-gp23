@@ -11,7 +11,7 @@ jobs:
       - name: Install pipx
         run: python3 -m pip install pipx
       - name: pipx ensurepath
-        run: /home/runner/.local/bin/pipx ensurepath
+        run: python3 -m pipx ensurepath --force
       - name: pipX PATH
         run: PATH=/home/runner/.local/bin:$PATH
       - name: Install poetry
