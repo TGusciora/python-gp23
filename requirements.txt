@@ -1,6 +1,5 @@
 distfit==1.4.5
 dython==0.7.3
-itertools
 math
 matplotlib==3.6.3
 numpy==1.24.1
