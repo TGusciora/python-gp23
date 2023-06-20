@@ -19,7 +19,7 @@ jobs:
       - name: Test environment
         run: python3 --version ; pip --version ; pipx --version ; pipx run poetry --version ; ls -a ; ls docs -a
       - name: Install dependencies
-        run: pipx run poetry install
+        run: python3 -m pip install -r ./requirements.txt
       - name: Build website
         run: make github_action_docs
       - name: Commit and Push
