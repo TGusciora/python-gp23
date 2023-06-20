@@ -1,0 +1,32 @@
+name: Docs2
+on: [push, pull_request, workflow_dispatch]
+permissions:
+    contents: write
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - name: Install pipx
+        run: python3 -m pip install pipx
+      - name: pipx ensurepath
+        run: python3 -m pipx ensurepath --force
+      - name: pipX PATH
+        run: PATH=/home/runner/.local/bin:$PATH
+      - name: Install poetry
+        run: pipx install poetry
+      - name: Test environment
+        run: python3 --version ; pip --version ; pipx --version ; pipx run poetry --version ; ls -a ; ls docs -a
+      - name: Install dependencies
+        run: python3 -m pip install -r ./requirements.txt
+      - name: Build website
+        run: make github_action_docs
+      - name: Commit and Push
+        # use account 'github-actions[bot]' to set the git config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs
+          git commit -m "new github pages"
+          git push
