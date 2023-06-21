@@ -8,6 +8,9 @@ jobs:
   pages:
     runs-on: ubuntu-latest
     steps:
+    - name: Install dependencies
+      run: |
+          pip install sphinx sphinx_rtd_theme
     - id: deployment
       uses: sphinx-notes/pages@v3
       with:
