@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-          pip install sphinx sphinx_rtd_theme gp23package
+          pip install sphinx sphinx_rtd_theme
     - name: Sphinx build
       run: |
           sphinx-build docs/source _build
