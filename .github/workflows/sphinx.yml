@@ -22,7 +22,8 @@ jobs:
             ${{ runner.os }}-pip-
       - name: Install dependencies
         run: python3 -m pip install sphinx sphinx_rtd_theme numpydoc -r ./requirements.txt
-             python3 -m pip install -e . #install package in editable mode
+      - name: Install package
+        run:  python3 -m pip install -e . #install package in editable mode
       - name: Sphinx build
         run: |
           sphinx-build docs/source build 
