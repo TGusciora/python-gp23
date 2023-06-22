@@ -24,11 +24,3 @@ Train
    :undoc-members:
    :show-inheritance:
    :private-members:
-
-Predict
-----------------------------------
-.. automodule:: gp23package.models.predict_model
-   :members:
-   :undoc-members:
-   :show-inheritance:
-   :private-members:

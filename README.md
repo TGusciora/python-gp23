@@ -49,7 +49,6 @@ Please read [install.md](install.md) for details on how to set up this project.
         │
         ├── models         <- Scripts to train models and then use trained models to make
         │   │                 predictions.
-        │   ├── predict_model.py
         │   └── train_model.py
         │   └── hyperparameters_model.py		
         │
