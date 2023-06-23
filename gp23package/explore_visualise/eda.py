@@ -34,7 +34,6 @@ def var_boxplot(var, data, target, title, xrotate=0):
     -------
     Graphs : matplotlib plots
        Boxplot and frequency table.
-
     """
     plt.figure(figsize=(10, 5))
     sn.boxplot(x=var, y=target, data=data)

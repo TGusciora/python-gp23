@@ -5,10 +5,10 @@
 
 
 Explore & Visualise
-==================================
+==================================================
 
 EDA (Exploratory Data Analysis)
-----------------------------------
+--------------------------------------------------
 .. automodule:: gp23package.explore_visualise.eda
    :members:
    :undoc-members:
