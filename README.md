@@ -3,7 +3,6 @@
 Guided Project 23 from DataQuest.io Data Scientist in Python path. Predicting house sale prices based on Ames, Iowa dataset.
 
 Technical documentation link: https://tgusciora.github.io/python-gp23/
-Warning: requirements
   
 ## Installation guide
 
