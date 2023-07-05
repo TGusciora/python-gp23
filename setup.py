@@ -26,7 +26,7 @@ setup(
     author='Tomasz G.',
     author_email='tgprogramming1@gmail.com',
     description='Guided Project 23 from DataQuest.io Data Scientist in Python path. Predicting house sale prices based on Ames, Iowa dataset.',
-    python_requires='>=3',
+    python_requires='>=3.9',
     license='MIT',
     url='',
     packages=find_packages(),
