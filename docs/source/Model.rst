@@ -10,7 +10,7 @@ Model
 
 Hyperparameters
 ----------------------------------
-.. automodule:: gp23package.models.hyperparameters_model
+.. automodule:: src.models.hyperparameters_model
    :members:
    :undoc-members:
    :show-inheritance:
@@ -19,7 +19,7 @@ Hyperparameters
 
 Train
 ----------------------------------
-.. automodule:: gp23package.models.train_model
+.. automodule:: src.models.train_model
    :members:
    :undoc-members:
    :show-inheritance:

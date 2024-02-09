@@ -9,7 +9,7 @@ Explore & Visualise
 
 EDA (Exploratory Data Analysis)
 --------------------------------------------------
-.. automodule:: gp23package.explore_visualise.eda
+.. automodule:: src.explore_visualise.eda
    :members:
    :undoc-members:
    :show-inheritance:

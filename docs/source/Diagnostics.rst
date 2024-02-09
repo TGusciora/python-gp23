@@ -9,7 +9,7 @@ Utils
 
 Diagnostics
 ----------------------------------
-.. automodule:: gp23package.utils.diagnostics
+.. automodule:: src.utils.diagnostics
    :members:
    :undoc-members:
    :show-inheritance:

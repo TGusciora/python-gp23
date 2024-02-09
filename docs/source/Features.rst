@@ -6,7 +6,7 @@
 
 Features - Build features
 ==================================
-.. automodule:: gp23package.features.build_features
+.. automodule:: src.features.build_features
    :members:
    :undoc-members:
    :show-inheritance:
