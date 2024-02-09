@@ -1,7 +1,7 @@
 import os
 
 # import project package
-import gp23package
+import src
 
 from setuptools import setup, find_packages
 

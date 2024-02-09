@@ -9,14 +9,14 @@
 
 ```bash
 conda env create -f environment.yml
-activate gp23package
+activate src
 ```
 
 or 
 
 ```bash
 mamba env create -f environment.yml
-activate gp23package
+activate src
 ```
 
 The packages necessary to run the project are now installed inside the conda environment.
@@ -41,7 +41,7 @@ To use the module inside your notebooks, add `%autoreload` at the top of your no
 Example of module usage :
 
 ```python
-from gp23package.utils.paths import data_dir
+from src.utils.paths import data_dir
 data_dir()
 ```
 
