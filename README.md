@@ -38,10 +38,10 @@ Please read [install.md](install.md) for details on how to set up this project.
     │                         apply when searching head of project.
     │
     ├── setup.py           <- Makes project pip installable (pip install -e .)
-    │                         so gp23package can be imported.
+    │                         so src can be imported.
     │
-    └── source_codes               <- Source code for use in this project.
-        ├── __init__.py    <- Makes gp23package a Python module.
+    └── src               <- Source code for use in this project.
+        ├── __init__.py    <- Makes src a Python module.
         │
         ├── data           <- Scripts to download, import or generate data.
         │   └── make_dataset.py
