@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Utils &mdash; GP23_PredictingHouseSalePrices 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Model" href="Model.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: babyblue" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            GP23_PredictingHouseSalePrices
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Technical documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDA.html">Explore &amp; Visualise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Features.html">Features - Build features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Model.html">Model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.utils.diagnostics">Diagnostics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._residual_stats"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._residual_stats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._res_hist"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._res_hist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._res_kde"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._res_kde()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._res_qq"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._res_qq()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._jb_normal_test"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._jb_normal_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._sw_normal_test"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._sw_normal_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._ad_normal_test"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._ad_normal_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._normal_test"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._normal_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._dw_autocorr_test"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._dw_autocorr_test()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._homoskedasticity_plot"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._homoskedasticity_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._bp_test_homoskedasticity"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._bp_test_homoskedasticity()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._vif"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._vif()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.utils.diagnostics.LinearDiagnostics._corr_matrix"><code class="docutils literal notranslate"><span class="pre">LinearDiagnostics._corr_matrix()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: babyblue" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GP23_PredictingHouseSalePrices</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Utils</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Diagnostics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="utils">
+<h1>Utils<a class="headerlink" href="#utils" title="Link to this heading"></a></h1>
+<section id="module-src.utils.diagnostics">
+<span id="diagnostics"></span><h2>Diagnostics<a class="headerlink" href="#module-src.utils.diagnostics" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.utils.diagnostics.</span></span><span class="sig-name descname"><span class="pre">LinearDiagnostics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">significance_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Perform linear model diagnostics and statistical tests on given sample.</p>
+<p>For linear regression tasks. Given significance level as a parameter
+performs number of tests and plots several diagrams:</p>
+<ul class="simple">
+<li><p>Descriptive statistics of model residuals</p></li>
+<li><p>histogram of residuals</p></li>
+<li><p>Kernel density plot of residuals</p></li>
+<li><p>QQ plot of residuals</p></li>
+<li><p>Jarque-Bera test for normality (residuals)</p></li>
+<li><p>Shapiro-Wilk test for normality (residuals)</p></li>
+<li><p>Anderson-Darling test for normality (residuals)</p></li>
+<li><p>DAgostino and Pearsons normality test (residuals) - stats.normaltest</p></li>
+<li><p>Durbin-Watson test for autocorrelation (residuals)</p></li>
+<li><p>Predicted value vs residual scatter plot</p></li>
+<li><p>Predicted value vs true value scatter plot</p></li>
+<li><p>Breusch-Pagan test for homoscedasticity (residuals)</p></li>
+<li><p>Variance Inflation Factor (VIF) table</p></li>
+<li><p>Correlation matrix of independent variables</p></li>
+</ul>
+<p class="rubric">Notes</p>
+<p>Prerequisites:</p>
+<p>models_list - dictionary {‘model_name’ : { ‘model’ : class instance,</p>
+<blockquote>
+<div><p>‘variables’ : model variables set alias}}</p>
+</div></blockquote>
+<p>scoring_dict - dictionary { ‘variables’ : [corresponding list of variables]}</p>
+<p>Required libraries:</p>
+<ul class="simple">
+<li><p>from statsmodels.stats.outliers_influence import variance_inflation_factor</p></li>
+<li><p>from statsmodels.compat import lzip</p></li>
+<li><p>from IPython.display import display, HTML</p></li>
+<li><p>import statsmodels as sm</p></li>
+<li><p>import scipy.stats as stats</p></li>
+<li><p>import statsmodels.stats.stattools as smt</p></li>
+<li><p>import statsmodels.stats.diagnostic as smd</p></li>
+<li><p>import matplotlib as plt</p></li>
+<li><p>import seaborn as sn</p></li>
+<li><p>import pandas as pd</p></li>
+<li><p>import numpy as np</p></li>
+<li><p>import pylab</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>model: str</strong></dt><dd><p>Name of model used for diagnostics.</p>
+</dd>
+<dt><strong>data</strong><span class="classifier">str</span></dt><dd><p>Data used for model goodness of fit.</p>
+</dd>
+<dt><strong>target</strong><span class="classifier">series</span></dt><dd><p>Series of target variable value. Must have corresponding index value
+with data.</p>
+</dd>
+<dt><strong>alpha</strong><span class="classifier">int</span></dt><dd><p>Probability of rejecting H0 when it is true. Parameter for statistical
+tests. Against significance level we find critical value for
+statistical test and compare it to statistic. Equal to
+significance_level parameter.</p>
+</dd>
+<dt><strong>predictions</strong><span class="classifier">pandas DataFrame</span></dt><dd><p>DataFrame with predicted values of dependent variable.</p>
+</dd>
+<dt><strong>results_df</strong><span class="classifier">pandas DataFrame</span></dt><dd><p>DataFrame with goodness of fit for each observation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>__init__(self, model_in, data_in, target, scoring_dict, model_list, significance_level=0.05)</strong></p></td>
+<td><p>Constructor method.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_residual_stats(self)</strong></p></td>
+<td><p>Print descriptive statistics of residuals.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_res_hist(self)</strong></p></td>
+<td><p>Display residuals histogram.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_res_kde(self)</strong></p></td>
+<td><p>Display residuals kernel density plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_jb_normal_test(self)</strong></p></td>
+<td><p>Perform Jarque-Bera test for normality of residuals.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_sw_normal_test(self)</strong></p></td>
+<td><p>Perform Shapiro-Wilk test for normality of residuals.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_ad_normal_test(self)</strong></p></td>
+<td><p>Perform Anderson-Darling test for normality of residuals.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_normal_test(self)</strong></p></td>
+<td><p>Perform D’Agostino normality test for residuals.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_dw_autocorr_test(self)</strong></p></td>
+<td><p>Perform Durbin-Watson test for autocorrelation of residuals.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_homoskedasticity_plot(self)</strong></p></td>
+<td><p>Display predicted values vs residuals plot.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_bp_test_homoskedasticity(self)</strong></p></td>
+<td><p>Perform Breusch-Pagan test for homoskedasticity.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_vif(self)</strong></p></td>
+<td><p>Display variance inflation factors (VIF).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_corr_matrix(self)</strong></p></td>
+<td><p>Display Pearson correlation matrix between variables.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._residual_stats">
+<span class="sig-name descname"><span class="pre">_residual_stats</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._residual_stats" title="Link to this definition"></a></dt>
+<dd><p>Calculate residual descriptive statistics on pointed dataset.</p>
+<p>Calculating summary statistics about residuals (true - predicted
+values)
+values of dependent variable.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._res_hist">
+<span class="sig-name descname"><span class="pre">_res_hist</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._res_hist" title="Link to this definition"></a></dt>
+<dd><p>Display residuals histogram.</p>
+<p>Displays histogram of residuals (true values - predicted values).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._res_kde">
+<span class="sig-name descname"><span class="pre">_res_kde</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._res_kde" title="Link to this definition"></a></dt>
+<dd><p>Display residuals kernel density plot.</p>
+<p>Displays kernel density plot of residuals (true values - predicted
+values).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._res_qq">
+<span class="sig-name descname"><span class="pre">_res_qq</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._res_qq" title="Link to this definition"></a></dt>
+<dd><p>Display residuals qqplot.</p>
+<p>Display residuals (true values - predicted values) quantile-quantile 
+plot.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._jb_normal_test">
+<span class="sig-name descname"><span class="pre">_jb_normal_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._jb_normal_test" title="Link to this definition"></a></dt>
+<dd><p>Perform Jarque Bera test for normality of residuals.</p>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Wiki &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Jarque%E2%80%93Bera_test">https://en.wikipedia.org/wiki/Jarque%E2%80%93Bera_test</a>&gt;</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._sw_normal_test">
+<span class="sig-name descname"><span class="pre">_sw_normal_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._sw_normal_test" title="Link to this definition"></a></dt>
+<dd><p>Perform Shapiro-Wilk test for normality of residuals.</p>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Wiki &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test">https://en.wikipedia.org/wiki/Shapiro%E2%80%93Wilk_test</a>&gt;</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._ad_normal_test">
+<span class="sig-name descname"><span class="pre">_ad_normal_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._ad_normal_test" title="Link to this definition"></a></dt>
+<dd><p>Perform Anderson-Darling test for normality of residuals.</p>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Wiki &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Anderson%E2%80%93Darling_test">https://en.wikipedia.org/wiki/Anderson%E2%80%93Darling_test</a>&gt;</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._normal_test">
+<span class="sig-name descname"><span class="pre">_normal_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._normal_test" title="Link to this definition"></a></dt>
+<dd><p>Perform D’Agostino normality test.</p>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Wiki &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/D%27Agostino%27s_K-squared_test">https://en.wikipedia.org/wiki/D%27Agostino%27s_K-squared_test</a>&gt;</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._dw_autocorr_test">
+<span class="sig-name descname"><span class="pre">_dw_autocorr_test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._dw_autocorr_test" title="Link to this definition"></a></dt>
+<dd><p>Perform Durbin-Watson test for autocorrelation.</p>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Wiki &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Durbin%E2%80%93Watson_statistic">https://en.wikipedia.org/wiki/Durbin%E2%80%93Watson_statistic</a>&gt;</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._homoskedasticity_plot">
+<span class="sig-name descname"><span class="pre">_homoskedasticity_plot</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._homoskedasticity_plot" title="Link to this definition"></a></dt>
+<dd><p>Plot predicted values against residual errors.</p>
+<p>Investigate visually possible homoscedasticity.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._bp_test_homoskedasticity">
+<span class="sig-name descname"><span class="pre">_bp_test_homoskedasticity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._bp_test_homoskedasticity" title="Link to this definition"></a></dt>
+<dd><p>Perform Breusch-Pagan test for homoskedasticity.</p>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Wiki &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Breusch%E2%80%93Pagan_test">https://en.wikipedia.org/wiki/Breusch%E2%80%93Pagan_test</a>&gt;</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._vif">
+<span class="sig-name descname"><span class="pre">_vif</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._vif" title="Link to this definition"></a></dt>
+<dd><p>Display variance inflation factors (VIF).</p>
+<p>Calculate variance inflation factors in dataset to check for
+multicollinearity.</p>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Wiki &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Variance_inflation_factor">https://en.wikipedia.org/wiki/Variance_inflation_factor</a>&gt;</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.utils.diagnostics.LinearDiagnostics._corr_matrix">
+<span class="sig-name descname"><span class="pre">_corr_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.utils.diagnostics.LinearDiagnostics._corr_matrix" title="Link to this definition"></a></dt>
+<dd><p>Display Pearson correlation matrix between variables.</p>
+<p>Calculates and displays matrix of correlations between variables in
+dataset. Correlation metric - Pearson correlation.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Model.html" class="btn btn-neutral float-left" title="Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Tomasz G.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

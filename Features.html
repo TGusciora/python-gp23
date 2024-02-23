@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Features - Build features &mdash; GP23_PredictingHouseSalePrices 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Model" href="Model.html" />
+    <link rel="prev" title="Explore &amp; Visualise" href="EDA.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: babyblue" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            GP23_PredictingHouseSalePrices
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Technical documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDA.html">Explore &amp; Visualise</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Features - Build features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#src.features.build_features.FeatureCorrection"><code class="docutils literal notranslate"><span class="pre">FeatureCorrection</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.features.build_features.FeatureCorrection.output"><code class="docutils literal notranslate"><span class="pre">FeatureCorrection.output()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.features.build_features.FeatureCorrection._drop_missing"><code class="docutils literal notranslate"><span class="pre">FeatureCorrection._drop_missing()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.features.build_features.FeatureCorrection._impute_values"><code class="docutils literal notranslate"><span class="pre">FeatureCorrection._impute_values()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.features.build_features.FeatureCorrection._convert_categories"><code class="docutils literal notranslate"><span class="pre">FeatureCorrection._convert_categories()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#src.features.build_features.FeatureBinning"><code class="docutils literal notranslate"><span class="pre">FeatureBinning</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.features.build_features.FeatureBinning._optbin_create"><code class="docutils literal notranslate"><span class="pre">FeatureBinning._optbin_create()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.features.build_features.FeatureBinning.transform"><code class="docutils literal notranslate"><span class="pre">FeatureBinning.transform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#src.features.build_features.boxcox_transformation"><code class="docutils literal notranslate"><span class="pre">boxcox_transformation()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Model.html">Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diagnostics.html">Utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: babyblue" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GP23_PredictingHouseSalePrices</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Features - Build features</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Features.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-src.features.build_features">
+<span id="features-build-features"></span><h1>Features - Build features<a class="headerlink" href="#module-src.features.build_features" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.features.build_features.FeatureCorrection">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.features.build_features.</span></span><span class="sig-name descname"><span class="pre">FeatureCorrection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numerical_var_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">na_var_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_missing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cutoff_fill</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fill_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mode'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_details</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.features.build_features.FeatureCorrection" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Transforming dataset to fix numerical variables issues with missing values.</p>
+<p>Create pandas dataframe with transformed numerical features to
+drop variables with high % of missing values, impute missing values
+for variables with low % of missing values nad convert non-numerical
+features to category type.</p>
+<p>Transformations:
+Dropping columns - if more than X% missing values (default: 25%)</p>
+<p>Imputing values - if max X% missing values (default: 25%) with 
+provided method (default: mode). For imputed variables also binary
+variables (variable name + ‘_NA’) created indicating if there was
+imputation for given record (value = 1). Imputation variables are
+added to self.na_var_list (list of imputation variables).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data_in</strong><span class="classifier">str</span></dt><dd><p>DataFrame to analyze.</p>
+</dd>
+<dt><strong>numerical_var_list</strong><span class="classifier">[]</span></dt><dd><p>List of numeric variables to be analyzed and transformed.</p>
+</dd>
+<dt><strong>na_var_list</strong><span class="classifier">[]</span></dt><dd><p>Name of input discrete variable list. Binary var_name + “_NA”
+variables are appended to that list.</p>
+</dd>
+<dt><strong>cutoff_missing</strong><span class="classifier">float64, default = 0.25</span></dt><dd><p>Percentage of missing values used as cutoff point for dropping
+variable. If missings &gt; cutoff_missing then drop variable from
+DataFrame.</p>
+</dd>
+<dt><strong>cutoff_fill</strong><span class="classifier">float64, default = 0.05</span></dt><dd><p>Percentage of missing values used as cutoff point for filling
+missing variables with fill_method. If missings &lt; cutoff_fill
+then replace missing values with fill_method and create new
+variable var_name + “_NA” which indicates rows with missing
+values for original variable.</p>
+</dd>
+<dt><strong>fill_method</strong><span class="classifier">str, default = ‘mode’</span></dt><dd><p>Filling method for missing values, when variable meets cutoff_fill
+criteria. Can choose from average, median, mode.</p>
+</dd>
+<dt><strong>print_details</strong><span class="classifier">bool, default = True</span></dt><dd><p>Parameter controlling informative output. If set to false functiom
+will supress displaying of detailed information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Required libraries:</p>
+<ul class="simple">
+<li><p>import pandas as pd</p></li>
+<li><p>import numpy as np</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data_in</strong><span class="classifier">pandas DataFrame</span></dt><dd><p>Dataset with features to be analyzed and transformed</p>
+</dd>
+<dt><strong>na_var_list</strong><span class="classifier">[]</span></dt><dd><p>Name of discrete variable list. Binary var_name + “_NA” variables
+are appended to that list.</p>
+</dd>
+<dt><strong>numerical_var_list</strong><span class="classifier">[]</span></dt><dd><p>list of numeric variables</p>
+</dd>
+<dt><strong>data_out</strong><span class="classifier">pandas DataFrame</span></dt><dd><p>Dataset with transformed features</p>
+</dd>
+<dt><strong>dropped_cols</strong><span class="classifier">pandas DataFrame</span></dt><dd><p>list of columns to be dropped because of too many missing values</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>output(self)</strong></p></td>
+<td><p>Imports file_name and returns as pandas DataFrame.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>__init__(self, file_name)</strong></p></td>
+<td><p>Constructor method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_drop_missing(self)</strong></p></td>
+<td><p>Dropping variables with missing value % higher than cutoff_missing parameter value.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>_impute_values(self)</strong></p></td>
+<td><p>If % of missing values are higher than cutoff_fill, then fills selected variables with give fill_method (available values : mode, mean, median). Also creates binary _NA variables where 1 indicates that there was value imputation made for particular record.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_convert_categories(self)</strong></p></td>
+<td><p>Convert non-numeric variables to “category” type.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.features.build_features.FeatureCorrection.output">
+<span class="sig-name descname"><span class="pre">output</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.features.build_features.FeatureCorrection.output" title="Link to this definition"></a></dt>
+<dd><p>Generate transformed output.</p>
+<p>Function calculates missing value % for each variable in dataset. Then
+performs (in order):</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Establishing list of variables to drop with missing values</dt><dd><p>exceeding cutoff_missing treshold</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Imputing values according to fill_method parameter for variables</dt><dd><p>with missing values not exceeding treshold</p>
+</dd>
+</dl>
+</li>
+<li><p>Converting non-numeric variables to “category” type</p></li>
+<li><p>Dropping columns calculated from point 1)</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data_out</strong><span class="classifier">DataFrame</span></dt><dd><p>DataFrame with transformed features.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.features.build_features.FeatureCorrection._drop_missing">
+<span class="sig-name descname"><span class="pre">_drop_missing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.features.build_features.FeatureCorrection._drop_missing" title="Link to this definition"></a></dt>
+<dd><p>Append variables with many missing values to dropped_cols list.</p>
+<p>Function checks for every variable if % of missing values exceeds
+cutoff_missing treshold. If it does, then adds variable name to
+dropped_cols list. Prints steps to terminal. This can be supressed
+with self.print_details = False.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.features.build_features.FeatureCorrection._impute_values">
+<span class="sig-name descname"><span class="pre">_impute_values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.features.build_features.FeatureCorrection._impute_values" title="Link to this definition"></a></dt>
+<dd><p>Impute calculated values for missing values in features.</p>
+<p>Function checks for every variable if % of missing values does not
+exceed cutoff_fill treshold. If it doesn’t, for missing value records
+it imputes value from fill_method (mode, mean, median) and creates
+_NA variable indicating value imputation for this record (value = 1).
+Prints steps to terminal. This can be supressed with self.print_details
+= False.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.features.build_features.FeatureCorrection._convert_categories">
+<span class="sig-name descname"><span class="pre">_convert_categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.features.build_features.FeatureCorrection._convert_categories" title="Link to this definition"></a></dt>
+<dd><p>Convert non-numeric variables to ‘category’ type.</p>
+<p>Selects all non-number type variables in self.data_out dataset
+and converts them to ‘category’ type.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.features.build_features.FeatureBinning">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.features.build_features.</span></span><span class="sig-name descname"><span class="pre">FeatureBinning</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prebin_method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'quantile'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cat_coff</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.01</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'WoE'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_details</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.features.build_features.FeatureBinning" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Binning categorical features for continuous target variable.</p>
+<p>Creates dictonary storing for each variable from var_list (has to be
+subset of X_df DataFrame) grouped to similar categories via continuous
+optimal binning function from optbinning library. This results in
+dictionary per variable containing optimal binning specification and
+Weight Of Evidence + Information Value calculations. WoE and IV values
+have been recalculated in this function, as currently in optbinning
+library WoE is calculated only for binary dependent variable. Formula for
+continuous calculation is taken from listendata.com (see: Source materials
+2.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X_df</strong><span class="classifier">str</span></dt><dd><p>DataFrame with independent variables to analyze.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">str</span></dt><dd><p>Series with dependent variable. Must be continuous.</p>
+</dd>
+<dt><strong>var_list</strong><span class="classifier">str</span></dt><dd><p>List of variable names to create optimal bins for and calculate WoE/IV
+/Target encoders. Must be a subset of X_df
+columns.</p>
+</dd>
+<dt><strong>prebin_method</strong><span class="classifier">str, default = “quantile”</span></dt><dd><p>Quoting source materials 2. : “The pre-binning method. Supported
+methods are “cart” for a CART decision tree,  “quantile” to generate
+prebins with approximately same frequency and “uniform” to generate
+prebins with equal width.”.</p>
+</dd>
+<dt><strong>cat_coff</strong><span class="classifier">float, default = 0.01</span></dt><dd><p>If category size is less than cat_coff % (default 1%) of total
+population , then it will be grouped in separate group. All categories
+with size lesser than cat_coff % will be grouped together.</p>
+</dd>
+<dt><strong>n_bins</strong><span class="classifier">int, default = 10</span></dt><dd><p>Max limit to number of bins (grouped categories).</p>
+</dd>
+<dt><strong>metric</strong><span class="classifier">str, default = “WoE”</span></dt><dd><p>Numeric value calculated as default value for variable / bin group.
+By default calculates Weight Of Evidence (WoE), possible to calculate
+“mean”.</p>
+</dd>
+<dt><strong>print_details</strong><span class="classifier">bool, default = True</span></dt><dd><p>Parameter controlling informative output. If set to false function
+will supress displaying of detailed information.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Required libraries:</p>
+<ul class="simple">
+<li><p>import pandas as pd</p></li>
+<li><p>from optbinning import ContinuousOptimalBinning</p></li>
+</ul>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Binning library &lt;<a class="reference external" href="http://gnpalencia.org/optbinning/binning_continuous.html">http://gnpalencia.org/optbinning/binning_continuous.html</a>&gt;</p></li>
+<li><p>WOE &lt;<a class="reference external" href="https://www.listendata.com/2019/08/WOE-IV-Continuous-Dependent.html">https://www.listendata.com/2019/08/WOE-IV-Continuous-Dependent.html</a>&gt;</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>optbin_dict</strong><span class="classifier">dictionary</span></dt><dd><p>Dictionary storing variable transformation information</p>
+</dd>
+<dt><strong>target_sum</strong><span class="classifier">float</span></dt><dd><p>Sum of dependent variable (y)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>transform(self, data, var_name)</strong></p></td>
+<td><p>Uses stored class optbin dictionary to transform var_name from data and outputs variable in return.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>__init__(self, X_df, y, var_list, prebin_method=”quantile”, cat_coff=0.01, n_bins=10, metric=”WoE”, print_details=True)</strong></p></td>
+<td><p>Constructor method.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>_optbin_create(self)</strong></p></td>
+<td><p>Uses continuous optimal binning library to create bins for each variable from var_list. Calculates statistics for each bin and stores as dictionary.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.features.build_features.FeatureBinning._optbin_create">
+<span class="sig-name descname"><span class="pre">_optbin_create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.features.build_features.FeatureBinning._optbin_create" title="Link to this definition"></a></dt>
+<dd><p>Create optimal binning dictionary.</p>
+<p>Use optbin library to create optimal bins for each variable, calculates
+metrics and stores for future reference / transformations based on
+gathered data.</p>
+<dl class="field-list">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><dl>
+<dt><strong>optbin_dict</strong><span class="classifier">Dictionary</span></dt><dd><p>optbin_dict[i][“optbin”] - metadata about transformation, parameter
+values
+optbin_dict[i][“bin_table”] - table containing information about
+grouped category variables with below variables:</p>
+<blockquote>
+<div><p>Bin - list of values representing grouped categories</p>
+<p>Count - number of observations in bin</p>
+<p>Count % - % of all observations in dataset</p>
+<p>Sum - sum of dependent variable by bin</p>
+<p>Mean - mean of dependent variable by bin</p>
+<p>Min - minimum value of dependent variable by bin</p>
+<p>Max - maximum value of dependent variable by bin</p>
+<p>Zeros count - “0” values of dependent variable by bin</p>
+<p>WoE - Weight of Evidence (See: source materials 2).</p>
+<p>IV - Information Value specyfiying prediction power by bin</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.features.build_features.FeatureBinning.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.features.build_features.FeatureBinning.transform" title="Link to this definition"></a></dt>
+<dd><p>Transform dataset variables using stored transformation dictionary.</p>
+<p>Transform variable var_name from Dataframe data using optbin_dict
+to return encoded value of Weight of Evidence (WoE) or mean dependent
+value from corresponding bin (see Optbin_create function). For every
+value that is not equal to “WoE” function will transform variable
+using “Mean” metric.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">str</span></dt><dd><p>DataFrame with variables to transform.</p>
+</dd>
+<dt><strong>var_name</strong><span class="classifier">str</span></dt><dd><p>Variable name (dtype = categorical) from data that will be
+transformed for corresponding metric from optbin_dict.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>transformed</strong><span class="classifier">float</span></dt><dd><p>Series representing transformed variable from category to float
+values.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.features.build_features.boxcox_transformation">
+<span class="sig-prename descclassname"><span class="pre">src.features.build_features.</span></span><span class="sig-name descname"><span class="pre">boxcox_transformation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformation_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_details</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.features.build_features.boxcox_transformation" title="Link to this definition"></a></dt>
+<dd><p>Box-Cox variable transformation.</p>
+<p>Transforming variable var from Dataframe data using Box-Cox transformation
+(power transform on series monotonically transformed by adding 1 - to avoid
+infinite results) in order to provide better predictive characteristics
+(stabilizes variance, makes variable distribution looking “more like”
+normal distribution. Also updates pointed dictionary with lambda values
+for transformed variables. This can be used for future scoring of new
+data. Returns transformed variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data</strong><span class="classifier">str</span></dt><dd><p>DataFrame to analyze.</p>
+</dd>
+<dt><strong>var_name</strong><span class="classifier">str</span></dt><dd><p>Variable name (dtype = numerical) from data that will be transformed.</p>
+</dd>
+<dt><strong>transformation_dict</strong><span class="classifier">str</span></dt><dd><p>Dictionary name storing lambda parameters for Box Cox transformations
+from data that will be transformed.</p>
+</dd>
+<dt><strong>print_details</strong><span class="classifier">bool, default = True</span></dt><dd><p>Parameter controlling informative output. If set to false function
+will supress displaying of detailed information.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>boxcox_var</strong><span class="classifier">float</span></dt><dd><p>Series representing transformed variable using Box-Cox transformation.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Required libraries:</p>
+<ul class="simple">
+<li><p>from scipy import stats</p></li>
+</ul>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Wikipedia &lt;<a class="reference external" href="https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation">https://en.wikipedia.org/wiki/Power_transform#Box%E2%80%93Cox_transformation</a>&gt;</p></li>
+</ol>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="EDA.html" class="btn btn-neutral float-left" title="Explore &amp; Visualise" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Model.html" class="btn btn-neutral float-right" title="Model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Tomasz G.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>

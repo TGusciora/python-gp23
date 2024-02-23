@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Model &mdash; GP23_PredictingHouseSalePrices 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=d45e8c67"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Utils" href="Diagnostics.html" />
+    <link rel="prev" title="Features - Build features" href="Features.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: babyblue" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            GP23_PredictingHouseSalePrices
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Technical documentation</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="EDA.html">Explore &amp; Visualise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Features.html">Features - Build features</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.models.hyperparameters_model">Hyperparameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.models.hyperparameters_model.kfold_nFeaturesSelector"><code class="docutils literal notranslate"><span class="pre">kfold_nFeaturesSelector()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#src.models.hyperparameters_model.varSelect_fwdBckw"><code class="docutils literal notranslate"><span class="pre">varSelect_fwdBckw()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-src.models.train_model">Train</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#src.models.train_model.EstimatorSelectionHelper"><code class="docutils literal notranslate"><span class="pre">EstimatorSelectionHelper</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#src.models.train_model.EstimatorSelectionHelper.fit"><code class="docutils literal notranslate"><span class="pre">EstimatorSelectionHelper.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#src.models.train_model.EstimatorSelectionHelper.score_summary"><code class="docutils literal notranslate"><span class="pre">EstimatorSelectionHelper.score_summary()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Diagnostics.html">Utils</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: babyblue" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">GP23_PredictingHouseSalePrices</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Model</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Model.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="model">
+<h1>Model<a class="headerlink" href="#model" title="Link to this heading"></a></h1>
+<section id="module-src.models.hyperparameters_model">
+<span id="hyperparameters"></span><h2>Hyperparameters<a class="headerlink" href="#module-src.models.hyperparameters_model" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="src.models.hyperparameters_model.kfold_nFeaturesSelector">
+<span class="sig-prename descclassname"><span class="pre">src.models.hyperparameters_model.</span></span><span class="sig-name descname"><span class="pre">kfold_nFeaturesSelector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">random_state</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.models.hyperparameters_model.kfold_nFeaturesSelector" title="Link to this definition"></a></dt>
+<dd><p>Use k-fold linear regression to estimate average score per #parameters.</p>
+<p>Estimate average R-squared adjustment on kfold cross-validated sample
+grouped by number of explanatory variables used. Applicable for regression
+tasks. Using cross-validation tests average. Estimated by linear model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data_in</strong><span class="classifier">str</span></dt><dd><p>DataFrame with independent variables to analyze.</p>
+</dd>
+<dt><strong>features_in</strong><span class="classifier">str</span></dt><dd><p>List of variables to be chosen from. Must come from data_in DataFrame.</p>
+</dd>
+<dt><strong>target</strong><span class="classifier">str</span></dt><dd><p>Series with dependent variable. Must be continuous.</p>
+</dd>
+<dt><strong>random_state</strong><span class="classifier">int, default = 123</span></dt><dd><p>Random number generator seed. used for KFold sampling.</p>
+</dd>
+<dt><strong>max_features</strong><span class="classifier">int, default = 10</span></dt><dd><p>Limit of features in iteration. Algorithm will compute for models from
+i = 1 feature to max_features.</p>
+</dd>
+<dt><strong>n_splits</strong><span class="classifier">int, default = 5</span></dt><dd><p>Cross-validation parameter - will split data_in to n_splits equal
+parts. VarClusHi library).</p>
+</dd>
+<dt><strong>shuffle</strong><span class="classifier">bool, default = True</span></dt><dd><p>Whether to shuffle the data before splitting into batches. Note that
+the samples within each split will not be shuffled.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>table: top10 scores</dt><dd><p>Top 10 R-squared scores by mean test-set score and corresponding 
+number of features category.</p>
+</dd>
+<dt>plot: mean scores plot</dt><dd><p>Line plot of number of features selected versus average train &amp; test
+sample R-squared scores.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Required libraries:</p>
+<p>import pandas as pd:</p>
+<p>import matplotlib.pyplot as plt:</p>
+<p>import numpy as np:</p>
+<p>from sklearn.model_selection import (KFold, GridSearchCV):</p>
+<p>from sklearn.linear_model import LinearRegression:</p>
+<p>from sklearn.feature_selection import RFE</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.models.hyperparameters_model.varSelect_fwdBckw">
+<span class="sig-prename descclassname"><span class="pre">src.models.hyperparameters_model.</span></span><span class="sig-name descname"><span class="pre">varSelect_fwdBckw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">features_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_features_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.models.hyperparameters_model.varSelect_fwdBckw" title="Link to this definition"></a></dt>
+<dd><p>Select subsets of n best predictors and save in a variable dictionary.</p>
+<p>Creates dictionary of variable sets for modelling using RidgeCV 
+regression. Variables are chosen using 3 algorithms: Select from model,
+forward selection, backwards selection with constraint to no more 
+variables than indicated in n_features_space list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data_in</strong><span class="classifier">str</span></dt><dd><p>DataFrame with independent variables to analyze.</p>
+</dd>
+<dt><strong>features_in</strong><span class="classifier">str</span></dt><dd><p>List of variables to be chosen from. Must come from data_in DataFrame.</p>
+</dd>
+<dt><strong>target</strong><span class="classifier">str</span></dt><dd><p>Series with dependent variable. Must be continuous.</p>
+</dd>
+<dt><strong>n_features_space</strong><span class="classifier">list</span></dt><dd><p>List of limit of selected features. Passed value of [1,2,3] will
+select 3 sets of features for each method.</p>
+</dd>
+<dt><strong>variable_dictionary</strong><span class="classifier">str</span></dt><dd><p>Pointer at variable dictionary that will be updated with
+variable_dictionary[value] = [list of selected features].</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>variable_dictionary[“SFM_”+str(n)]</strong><span class="classifier">list</span></dt><dd><p>List of variables stored as dictionary entry. Chosen by select from
+model method.</p>
+</dd>
+<dt><strong>variable_dictionary[“FWD_”+str(n)]</strong><span class="classifier">list</span></dt><dd><p>List of variables stored as dictionary entry. Chosen by forward
+variable selection method.</p>
+</dd>
+<dt><strong>variable_dictionary[“BKWD_”+str(n)]</strong><span class="classifier">list</span></dt><dd><p>List of variables stored as dictionary entry. Chosen by backward
+variable selection method.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Required libraries:</p>
+<ul class="simple">
+<li><p>from sklearn.linear_model import RidgeCV</p></li>
+<li><p>from sklearn.feature_selection import (SequentialFeatureSelector, SelectFromModel)</p></li>
+</ul>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Diabetes use-case &lt;<a class="reference external" href="https://scikit-learn.org/stable/auto_examples/feature_selection/plot_select_from_model_diabetes.html">https://scikit-learn.org/stable/auto_examples/feature_selection/plot_select_from_model_diabetes.html</a>&gt;</p></li>
+</ol>
+</dd></dl>
+
+</section>
+<section id="module-src.models.train_model">
+<span id="train"></span><h2>Train<a class="headerlink" href="#module-src.models.train_model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="src.models.train_model.EstimatorSelectionHelper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.models.train_model.</span></span><span class="sig-name descname"><span class="pre">EstimatorSelectionHelper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.models.train_model.EstimatorSelectionHelper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Iterate through dictionaries of models and returning sum of results.</p>
+<p>Class used for iterating through two dictionaries - one with list of
+models, and one with list of parameters (describing hyperparameter space).
+For each combination of two dictionaries class instantiates model object,
+trains it on provided dataset using k-fold linear regression to estimate
+average score per #parameters. Applicable for regression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>models</strong><span class="classifier">str</span></dt><dd><p>Dictionary of model object instances.</p>
+</dd>
+<dt><strong>params</strong><span class="classifier">str</span></dt><dd><p>Dictionary of hyperparameters for each model object from models dict.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Required libraries:</p>
+<p>import pandas as pd</p>
+<p>import numpy as np</p>
+<p>from sklearn.linear_model import LinearRegression</p>
+<p>from sklearn.linear_model import Ridge</p>
+<p>from sklearn.linear_model import ElasticNet</p>
+<p>from sklearn.linear_model import Lasso</p>
+<p>from sklearn.linear_model import TheilSenRegressor</p>
+<p>from sklearn.linear_model import RANSACRegressor</p>
+<p>from sklearn.linear_model import HuberRegressor</p>
+<p>from sklearn.linear_model import SGDRegressor</p>
+<p>from sklearn.linear_model import Lars</p>
+<p>from sklearn.linear_model import RidgeCV</p>
+<p>from sklearn.model_selection import GridSearchCV</p>
+<p class="rubric">References</p>
+<p>Source materials:</p>
+<ol class="arabic simple">
+<li><p>Blog &lt;<a class="reference external" href="https://www.davidsbatista.net/blog/2018/02/23/model_optimization/">https://www.davidsbatista.net/blog/2018/02/23/model_optimization/</a>&gt;</p></li>
+</ol>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>score_summary(self, sort_by=’mean_score’)</strong></p></td>
+<td><p>Return summary of scores.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>fit(self, X, y, cv=3, n_jobs=3, verbose=1, scoring=None, refit=False))</strong></p></td>
+<td><p>Fit models from dictionaries to data using GridSearchCV.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>__init__(self, models, params)</strong></p></td>
+<td><p>Constructor method.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.models.train_model.EstimatorSelectionHelper.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">refit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.models.train_model.EstimatorSelectionHelper.fit" title="Link to this definition"></a></dt>
+<dd><p>Fit models from dictionaries on given dataset using cross-validation.</p>
+<p>Using each model from models dictionary and set of hyperparameters
+from params dictionary method fits model to the dataset and estimates
+parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>X</strong><span class="classifier">str</span></dt><dd><p>DataFrame with independent variables to analyze.</p>
+</dd>
+<dt><strong>y</strong><span class="classifier">str</span></dt><dd><p>Series with dependent variable.</p>
+</dd>
+<dt><strong>cv</strong><span class="classifier">int, default = 3</span></dt><dd><p>Cross-validation parameter - splits X dataset into cv independent
+samples.</p>
+</dd>
+<dt><strong>n_jobs</strong><span class="classifier">int, default = 3</span></dt><dd><p>Multi-threading parameter - runs n_jobs in parallel.</p>
+</dd>
+<dt><strong>verbose</strong><span class="classifier">int, default = 1</span></dt><dd><p>Controlling output - values from 0 (no messages) to 3 (all
+messages and times of computation).</p>
+</dd>
+<dt><strong>scoring</strong><span class="classifier">str, default = None</span></dt><dd><p>Test evaluation strategy.</p>
+</dd>
+<dt><strong>refit</strong><span class="classifier">bool, default = False</span></dt><dd><p>Refit an estimator using the best found parameters on the whole
+dataset.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.models.train_model.EstimatorSelectionHelper.score_summary">
+<span class="sig-name descname"><span class="pre">score_summary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sort_by</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'mean_score'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.models.train_model.EstimatorSelectionHelper.score_summary" title="Link to this definition"></a></dt>
+<dd><p>Create model fit summary scores.</p>
+<p>Creates DataFrame containing information about model (estimator) and
+cross-validation fit scores on provided dataset: minimum, maximum,
+mean and standard deviation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sort_by</strong><span class="classifier">str, default = ‘mean_score’</span></dt><dd><p>Variable used to sort resulting dataframe (descending).</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>df: DataFrame</dt><dd><p>Pandas Dataframe with cross-validation estimation results for each
+model.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Features.html" class="btn btn-neutral float-left" title="Features - Build features" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Diagnostics.html" class="btn btn-neutral float-right" title="Utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Tomasz G.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+    <!-- Theme Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX', {
+          'anonymize_ip': false,
+      });
+    </script> 
+
+</body>
+</html>
